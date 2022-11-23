@@ -1,0 +1,12 @@
+version: '2'
+services:
+  dns-master:
+    image: myowndns:latest
+    stdin_open: true
+    tty: true
+    ports:
+    - 53:53/tcp
+    - 53:53/udp
+    labels:
+      io.rancher.container.pull_image: always
+

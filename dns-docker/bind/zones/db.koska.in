@@ -1,0 +1,54 @@
+$TTL 86400      ; 1 day
+@               IN SOA  ns1.koska.in. ns2.koska.in. (
+                                2020280901 ; serial
+                                10800      ; refresh (3 hours)
+                                3600       ; retry (1 hour)
+                                604800     ; expire (1 week)
+                                600        ; minimum (10 minutes)
+                                )
+                        NS      ns1.koska.in.
+                        NS      ns2.koska.in.
+
+$ORIGIN koska.in.
+
+; ### production ### {{{
+; devices {{{
+; device barematal
+dns-server-vlan4        A       192.168.4.250
+acerserver              A       192.168.4.254
+
+; end: devices }}}
+
+; services {{{
+dns1            	A       192.168.4.250
+dns2            	A       192.168.4.250
+ns1             	A       192.168.4.250
+ns2             	A       192.168.4.250
+bitwarden       	A       192.168.4.200
+test            	A       192.168.4.200
+external		A	192.168.4.200
+pihole			A	192.168.4.200
+portainer               A       192.168.4.102
+
+; end: services }}}
+
+; virtual machines {{{
+; dockers and vm
+dns-docker         	A       192.168.4.250
+phpmyadmin 	   	A	192.168.4.101
+rancher		   	A       192.168.4.101
+core		   	A       192.168.4.101
+ac01-vm-flatcaros  	A       192.168.4.200
+ac02-vm-ubuntu20   	A       192.168.4.100
+ac03-vm-ubuntu16   	A       192.168.4.101
+manager01-swarm    	A	192.168.4.102
+worker01-swarm	   	A       192.168.4.103
+worker02-swarm     	A       192.168.4.104
+private-test-registry	A	192.168.4.250
+
+; end: virtual machines }}}
+; end: ### production ### }}}
+
+;# vim: ts=4 sw=4 et ft=bindzone
+
+_BN IN TXT "1"
